@@ -90,3 +90,19 @@
  	logfile = new std::fstream(filename, std::ios::out|std::ios::app);
  	if(logfile == NULL)
  	{
+--- pxe-1.4.1/configure.in~	2002-08-30 10:43:13.000000000 +0200
++++ pxe-1.4.1/configure.in	2004-03-17 17:53:25.000000000 +0100
+@@ -39,7 +39,12 @@
+ AC_MSG_RESULT($PXELOGFILE)
+ AC_DEFINE_UNQUOTED(PXELOGFILE, $PXELOGFILE)
+ 
+-
++dnl location of the lock file
++AC_MSG_CHECKING(the location of the log file)
++LOCKFILE="\"/tmp/pxe.pid"\"
++AC_ARG_WITH(lockfile, [  --with-lockfile=file    location of the pxe lock file], [ LOCKFILE="\"${withval}\"" ])
++AC_MSG_RESULT($LOCKFILE)
++AC_DEFINE_UNQUOTED(LOCKFILE, $LOCKFILE)
+ 
+ dnl Checks for libraries.
+ AC_HAVE_LIBRARY(socket)
