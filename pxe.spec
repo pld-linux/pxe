@@ -3,7 +3,7 @@ Summary:	A Linux PXE (Preboot eXecution Environment) package
 Summary(pl):	Pakiet z implementacj± PXE (Preboot eXecution Environment) dla linuksa
 Group:		Networking/Daemons
 Version:	1.4.1
-Release:	1
+Release:	2
 License:	GPL
 Source0:	http://www.kano.org.uk/projects/pxe/%{name}-%{version}.tar.gz
 # Source0-md5:	f438ee1e394540340c00aaa035aecf0b
