@@ -14,6 +14,8 @@ URL:		http://www.kano.org.uk/projects/pxe/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
+PreReq:		rc-scripts
+Requires(post,preun):	/sbin/chkconfig
 Provides:	pxeserver
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
