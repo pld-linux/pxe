@@ -1,6 +1,6 @@
-Name:		pxe
 Summary:	A Linux PXE (Preboot eXecution Environment) package
-Summary(pl):	Pakiet z implementacj± PXE (Preboot eXecution Environment) dla linuksa
+Summary(pl):	Implementacja PXE (Preboot eXecution Environment) dla Linuksa
+Name:		pxe
 Group:		Networking/Daemons
 Version:	1.4.1
 Release:	2
@@ -10,9 +10,9 @@ Source0:	http://www.kano.org.uk/projects/pxe/%{name}-%{version}.tar.gz
 Source1: 	%{name}.init
 Source2: 	%{name}.sysconfig
 Patch0:		%{name}-lockfile.patch
-Provides:	pxeserver
 URL:		http://www.kano.org.uk/projects/pxe/
 BuildRequires:	libstdc++-devel
+Provides:	pxeserver
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -20,7 +20,7 @@ The pxe package contains the PXE (Preboot eXecution Environment)
 server.
 
 %description -l pl
-Pakiet pxe zawiera serwer PXE(Preboot eXecution Environment).
+Pakiet pxe zawiera serwer PXE (Preboot eXecution Environment).
 
 %prep
 %setup -q
@@ -37,12 +37,13 @@ Pakiet pxe zawiera serwer PXE(Preboot eXecution Environment).
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sbindir},%{_sysconfdir}/{rc.d/init.d,sysconfig}}
+install -d $RPM_BUILD_ROOT{%{_sbindir},/etc/{rc.d/init.d,sysconfig}}
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d/%{name}
-install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/%{name}
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/%{name}
+install %{SOURCE2} $RPM_BUILD_ROOT/etc/sysconfig/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -67,6 +68,6 @@ fi
 %defattr(644,root,root,755)
 %doc README LICENCE INSTALL Changes
 %attr(755,root,root) %{_sbindir}/pxe
-%attr(644,root,root) %config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/pxe.conf
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/pxe.conf
 %attr(754,root,root) /etc/rc.d/init.d/pxe
 %config(noreplace) %verify(not size mtime md5) /etc/sysconfig/pxe
