@@ -11,6 +11,8 @@ Source1: 	%{name}.init
 Source2: 	%{name}.sysconfig
 Patch0:		%{name}-lockfile.patch
 URL:		http://www.kano.org.uk/projects/pxe/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	libstdc++-devel
 Provides:	pxeserver
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
