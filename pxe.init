@@ -4,8 +4,7 @@
 #
 # chkconfig:	345 55 45
 #
-# description:	
-# PXE (Preboot eXecution Environment) Server
+# description:	PXE (Preboot eXecution Environment) Server
 
 # Source function library
 . /etc/rc.d/init.d/functions
@@ -44,10 +43,11 @@ case "$1" in
 	if [ -f /var/lock/subsys/pxe ]; then
 		msg_stopping pxe
 		killproc pxe
-		rm -f /var/run/pxe.pid /var/lock/subsys/pxe >/dev/null 2>&1
+		rm -f /var/lock/subsys/pxe >/dev/null 2>&1
 	else
 		msg_not_running pxe
 	fi	
+	rm -f /var/run/pxe.pid >/dev/null 2>&1
 	;;
   restart|reload|force-reload)
 	$0 stop
