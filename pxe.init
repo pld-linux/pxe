@@ -24,7 +24,7 @@ if is_yes "${NETWORKING}"; then
 else
 	exit 0
 fi
-			
+
 RETVAL=0
 # See how we were called.
 case "$1" in
@@ -32,9 +32,9 @@ case "$1" in
 	# Check if the service is already running?
 	if [ ! -f /var/lock/subsys/pxe ]; then
 		msg_starting pxe
-		daemon /usr/sbin/pxe 
+		daemon /usr/sbin/pxe
 		RETVAL=$?
-		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/pxe		
+		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/pxe
 	else
 		msg_already_running pxe
 	fi
@@ -46,7 +46,7 @@ case "$1" in
 		rm -f /var/lock/subsys/pxe >/dev/null 2>&1
 	else
 		msg_not_running pxe
-	fi	
+	fi
 	rm -f /var/run/pxe.pid >/dev/null 2>&1
 	;;
   restart|reload|force-reload)
