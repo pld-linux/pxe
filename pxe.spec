@@ -7,15 +7,15 @@ Release:	1
 License:	GPL
 Source0:	http://www.kano.org.uk/projects/pxe/%{name}-%{version}.tar.gz
 # Source0-md5:	89dcb359a4c4fce475633dd771e77aa7
-Source1: 	%{name}.init
-Source2: 	%{name}.sysconfig
+Source1:	%{name}.init
+Source2:	%{name}.sysconfig
 Patch0:		%{name}-lockfile.patch
 URL:		http://www.kano.org.uk/projects/pxe/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libstdc++-devel
-PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
+Requires:	rc-scripts
 Provides:	pxeserver
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -72,6 +72,6 @@ fi
 %defattr(644,root,root,755)
 %doc README LICENCE INSTALL Changes
 %attr(755,root,root) %{_sbindir}/pxe
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/pxe.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/pxe.conf
 %attr(754,root,root) /etc/rc.d/init.d/pxe
-%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/pxe
+%config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/pxe
