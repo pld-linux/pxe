@@ -1,5 +1,5 @@
 Summary:	A Linux PXE (Preboot eXecution Environment) package
-Summary(pl):	Implementacja PXE (Preboot eXecution Environment) dla Linuksa
+Summary(pl.UTF-8):   Implementacja PXE (Preboot eXecution Environment) dla Linuksa
 Name:		pxe
 Group:		Networking/Daemons
 Version:	1.4.2
@@ -23,7 +23,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 The pxe package contains the PXE (Preboot eXecution Environment)
 server.
 
-%description -l pl
+%description -l pl.UTF-8
 Pakiet pxe zawiera serwer PXE (Preboot eXecution Environment).
 
 %prep
